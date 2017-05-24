@@ -1,10 +1,14 @@
+// dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import store from './store';
 
-import './index.css';
+// global styles
+import './style/global.styl';
+
+// components
 import App from './containers/App';
 
 ReactDOM.render(

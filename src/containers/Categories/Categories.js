@@ -36,15 +36,12 @@ class Categories extends Component {
   }
 
   render() {
-    const { loading } = this.props.categories;
+    const { loading, loaded } = this.props.categories;
     return (
       <div>
         <h1>Categories</h1>
-        {loading
-          ? <p>loading...</p>
-          : <ul>
-            {this.renderCategories()}
-          </ul>}
+        {loading && <p className="loading">loading...</p>}
+        {loaded && <ul> {this.renderCategories()} </ul>}
       </div>
     );
   }

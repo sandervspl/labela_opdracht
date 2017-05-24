@@ -1,10 +1,10 @@
 // api
-import { getCategories } from '../../api/api';
+import { getPeople } from '../../api/api';
 
 // actions
-export const START = 'swapi/categories/START';
-export const SUCCESS = 'swapi/categories/SUCCESS';
-export const FAIL = 'swapi/categories/FAIL';
+export const START = 'swapi/people/START';
+export const SUCCESS = 'swapi/people/SUCCESS';
+export const FAIL = 'swapi/people/FAIL';
 
 
 // state
@@ -68,17 +68,17 @@ const fetchFail = (errorMessage = 'Unable to connect to SWAPI.') => ({
 });
 
 // async actions
-export const fetchCategories = () => async (dispatch) => {
+export const fetchPeople = () => async (dispatch) => {
   // set fetch state to start
   dispatch(fetchStart());
 
   try {
-    const payload = await getCategories();
+    const payload = await getPeople();
 
     // set state to result
     dispatch(fetchSuccess(payload));
   } catch (err) {
-    // console.error(`CATEGORIES ERROR: ${err}`);
+    // console.error(`PEOPLE ERROR: ${err}`);
     dispatch(fetchFail());
   }
 };

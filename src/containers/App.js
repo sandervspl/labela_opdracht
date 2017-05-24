@@ -1,14 +1,18 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Categories from './Categories';
-// import SecondPage from './SecondPage';
+import People from './People';
 import FourOhFour from '../components/FourOhFour';
 
+// style
+import './App.styl';
+
 const App = () => (
-  <div>
-    <h1>Hello world</h1>
+  <div className="app-layout">
+    <h1>Label A SWAPI Assignment</h1>
     <Switch>
       <Route exact path="/" component={Categories} />
+      <Route exact path="/people" component={People} />
       <Route component={FourOhFour} />
     </Switch>
   </div>
