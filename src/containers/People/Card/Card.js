@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './Card.styl';
 
 const Card = ({ data }) => (
-  <div className="card" key={data.name}>
+  <div className="card">
     <h3 className="name">{data.name}</h3>
     <ul>
       <li>gender {data.gender}</li>

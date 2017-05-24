@@ -1,4 +1,3 @@
-/* eslint-disable */
 // dependencies
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -39,7 +38,7 @@ class People extends Component {
   renderPeople() {
     const { results } = this.props.people.list;
 
-    return results.map((person) => <Card data={person} />);
+    return results.map(person => <Card data={person} key={person.name} />);
   }
 
   render() {
