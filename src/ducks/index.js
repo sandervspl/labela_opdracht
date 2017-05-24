@@ -1,5 +1,11 @@
+// dependencies
 import { combineReducers } from 'redux';
 
-const allReducers = combineReducers({});
+// reducers
+import categoriesReducer from './modules/categories';
+
+const allReducers = combineReducers({
+  categories: categoriesReducer,
+});
 
 export default allReducers;

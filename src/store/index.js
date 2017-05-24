@@ -29,8 +29,8 @@ const store = createStore(
 );
 
 // debugging
-// if (process.env.NODE_ENV === 'development') {
-//   window.store = store;
-// }
+if (process.env.NODE_ENV === 'development') {
+  window.store = store;
+}
 
 export default store;
