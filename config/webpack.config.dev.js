@@ -7,7 +7,7 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
-
+var postStylus = require('poststylus');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -111,8 +111,9 @@ module.exports = {
           /\.html$/,
           /\.(js|jsx)$/,
           /\.css$/,
+          /\.styl$/,
           /\.json$/,
-          /\.svg$/
+          /\.svg$/,
         ],
         loader: 'url',
         query: {
@@ -142,6 +143,10 @@ module.exports = {
         test: /\.css$/,
         loader: 'style!css?importLoaders=1!postcss'
       },
+      {
+        test: /\.styl$/,
+        loader: 'style!css?importLoaders=1!stylus'
+      },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
       {
@@ -158,7 +163,20 @@ module.exports = {
       }
     ]
   },
-
+  stylus: {
+    use: [
+      postStylus([
+        autoprefixer({
+          browsers: [
+            '>1%',
+            'last 4 versions',
+            'Firefox ESR',
+            'not ie < 9', // React doesn't support IE8 anyway
+          ]
+        })
+      ])
+    ]
+  },
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [

@@ -1,3 +1,4 @@
+/* eslint-disable */
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,7 +8,7 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var url = require('url');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
-
+var postStylus = require('poststylus');
 
 
 function ensureSlash(path, needsSlash) {
@@ -87,7 +88,7 @@ module.exports = {
       'react-native': 'react-native-web'
     }
   },
-  
+
   module: {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
@@ -116,6 +117,7 @@ module.exports = {
           /\.html$/,
           /\.(js|jsx)$/,
           /\.css$/,
+          /\.styl/,
           /\.json$/,
           /\.svg$/
         ],
@@ -130,7 +132,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: paths.appSrc,
         loader: 'babel',
-        
+
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
@@ -149,6 +151,10 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1!postcss')
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
+      {
+        test: /\.styl$/,
+        loader: 'style!css?importLoaders=1!stylus'
+      },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
       {
@@ -165,7 +171,20 @@ module.exports = {
       }
     ]
   },
-  
+  stylus: {
+    use: [
+      postStylus([
+        autoprefixer({
+          browsers: [
+            '>1%',
+            'last 4 versions',
+            'Firefox ESR',
+            'not ie < 9', // React doesn't support IE8 anyway
+          ]
+        })
+      ])
+    ]
+  },
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [
