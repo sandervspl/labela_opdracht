@@ -3,14 +3,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+// actions
+import * as peopleActions from 'ducks/modules/people';
+
 // components
+import Loading from 'components/Loading';
+import PersonModal from './PersonModal';
 import Card from './Card/Card';
 
 // style
 import './People.styl';
 
-// actions
-import * as peopleActions from '../../ducks/modules/people';
 
 class People extends Component {
   static propTypes = {
@@ -26,6 +29,14 @@ class People extends Component {
     fetchPeople: PropTypes.func,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activePerson: {},
+    };
+  }
+
   componentDidMount() {
     const { fetchPeople } = this.props;
     const { loaded } = this.props.people;
@@ -35,18 +46,35 @@ class People extends Component {
     }
   }
 
+  setActivePerson = (personObject) => {
+    this.setState({ activePerson: personObject });
+  }
+
+  closeModal = () => {
+    this.setState({ activePerson: {} });
+  }
+
   renderPeople() {
     const { results } = this.props.people.list;
 
-    return results.map(person => <Card data={person} key={person.name} />);
+    return results.map(person => (
+      <Card
+        data={person}
+        key={person.name}
+        setActivePerson={this.setActivePerson}
+      />
+    ));
   }
 
   render() {
     const { loading, loaded } = this.props.people;
+    const { activePerson } = this.state;
+
     return (
       <div>
         <h1>People</h1>
-        {loading && <p className="loading">Loading...</p>}
+        <PersonModal person={activePerson} close={this.closeModal} />
+        {loading && <Loading />}
         {loaded && <div className="grid"> {this.renderPeople()} </div>}
       </div>
     );

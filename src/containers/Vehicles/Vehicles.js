@@ -6,12 +6,12 @@ import { connect } from 'react-redux';
 // actions
 import * as vehiclesActions from 'ducks/modules/vehicles';
 
-// style
-import './Vehicles.styl';
-
 // components
+import Loading from 'components/Loading';
 import Table from './Table/Table';
 
+// style
+import './Vehicles.styl';
 
 class Vehicles extends Component {
   static propTypes = {
@@ -43,7 +43,7 @@ class Vehicles extends Component {
     return (
       <div>
         <h1>Vehicles</h1>
-        {loading && <p className="loading">Loading...</p>}
+        {loading && <Loading />}
         {loaded &&
         <div className="vehicles-table-container">
           <Table data={results} />
