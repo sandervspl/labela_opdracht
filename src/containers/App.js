@@ -1,9 +1,12 @@
+// dependencies
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+
+// components
+import FourOhFour from 'components/FourOhFour';
 import Categories from './Categories';
 import People from './People';
 import Vehicles from './Vehicles';
-import FourOhFour from '../components/FourOhFour';
 
 // style
 import './App.styl';

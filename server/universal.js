@@ -7,9 +7,8 @@ const { Provider } = require('react-redux');
 const { renderToString } = require('react-dom/server');
 const { StaticRouter } = require('react-router-dom');
 
-// const { default: configureStore } = require('../src/store');
-const store = require('../src/store');
-const { default: App } = require('../src/containers/App');
+const store = require('store');
+const { default: App } = require('containers/App');
 
 module.exports = function universalLoader(req, res) {
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html');

@@ -1,5 +1,5 @@
 // api
-import { getPeople } from '../../api/api';
+import { getPeople } from 'api';
 
 // actions
 export const START = 'swapi/people/START';

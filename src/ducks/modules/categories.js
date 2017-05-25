@@ -1,5 +1,5 @@
 // api
-import { getCategories } from '../../api/api';
+import { getCategories } from 'api';
 
 // actions
 export const START = 'swapi/categories/START';

@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
+// actions
+import * as categoriesActions from 'ducks/modules/categories';
+
 // style
 import './Categories.css';
 
-// actions
-import * as categoriesActions from '../../ducks/modules/categories';
 
 class Categories extends Component {
   static propTypes = {

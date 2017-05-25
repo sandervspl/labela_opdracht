@@ -8,6 +8,7 @@ var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeMod
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
 var postStylus = require('poststylus');
+var path = require('path');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -73,8 +74,14 @@ module.exports = {
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
     // https://github.com/facebookincubator/create-react-app/issues/290
-    extensions: ['.js', '.json', '.jsx', ''],
+    extensions: ['.js', '.json', '.jsx', '.styl', ''],
     alias: {
+      api: path.resolve(__dirname, '../src/api'),
+      ducks: path.resolve(__dirname, '../src/ducks'),
+      components: path.resolve(__dirname, '../src/components'),
+      containers: path.resolve(__dirname, '../src/containers'),
+      store: path.resolve(__dirname, '../src/store'),
+      style: path.resolve(__dirname, '../src/style'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web'

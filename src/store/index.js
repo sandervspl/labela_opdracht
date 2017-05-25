@@ -7,7 +7,7 @@ import { responsiveStateReducer } from 'redux-responsive';
 import { browserHistory } from 'react-router';
 
 // reducers
-import app from '../ducks';
+import app from 'ducks';
 
 const reducer = combineReducers({
   app,

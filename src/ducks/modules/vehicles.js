@@ -1,5 +1,5 @@
 // api
-import { getVehicles } from '../../api/api';
+import { getVehicles } from 'api';
 
 // actions
 export const START = 'swapi/vehicles/START';

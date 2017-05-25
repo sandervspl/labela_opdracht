@@ -3,14 +3,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+// actions
+import * as vehiclesActions from 'ducks/modules/vehicles';
+
 // style
 import './Vehicles.styl';
 
 // components
 import Table from './Table/Table';
 
-// actions
-import * as vehiclesActions from '../../ducks/modules/vehicles';
 
 class Vehicles extends Component {
   static propTypes = {
