@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Categories from './Categories';
 import People from './People';
+import Vehicles from './Vehicles';
 import FourOhFour from '../components/FourOhFour';
 
 // style
@@ -13,6 +14,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Categories} />
       <Route exact path="/people" component={People} />
+      <Route exact path="/vehicles" component={Vehicles} />
       <Route component={FourOhFour} />
     </Switch>
   </div>

@@ -9,4 +9,4 @@ export const getCategories = async () => fetchSwapi('');
 
 export const getPeople = async () => fetchSwapi('people');
 
-export const getPlanets = async () => fetchSwapi('planets');
+export const getVehicles = async () => fetchSwapi('vehicles');
