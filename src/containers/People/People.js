@@ -10,6 +10,7 @@ import * as peopleActions from 'ducks/modules/people';
 import Header1 from 'components/Header1';
 import Loading from 'components/Loading';
 import Error from 'components/Error';
+import LinkToCategories from 'components/LinkToCategories';
 import PersonModal from './PersonModal';
 import Card from './Card/Card';
 
@@ -74,6 +75,7 @@ class People extends Component {
 
     return (
       <div>
+        <LinkToCategories />
         <Header1>People</Header1>
         <PersonModal person={activePerson} close={this.closeModal} />
         {loading && <Loading />}

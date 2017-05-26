@@ -10,6 +10,7 @@ import * as vehiclesActions from 'ducks/modules/vehicles';
 import Header1 from 'components/Header1';
 import Loading from 'components/Loading';
 import Error from 'components/Error';
+import LinkToCategories from 'components/LinkToCategories';
 import Table from './Table/Table';
 
 // style
@@ -44,6 +45,7 @@ class Vehicles extends Component {
 
     return (
       <div>
+        <LinkToCategories />
         <Header1>Vehicles</Header1>
         {loading && <Loading />}
         {loaded &&
