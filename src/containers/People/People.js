@@ -9,6 +9,7 @@ import * as peopleActions from 'ducks/modules/people';
 // components
 import Header1 from 'components/Header1';
 import Loading from 'components/Loading';
+import Error from 'components/Error';
 import PersonModal from './PersonModal';
 import Card from './Card/Card';
 
@@ -21,8 +22,8 @@ class People extends Component {
     people: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
-      // error: PropTypes.bool,
-      // errorMessage: PropTypes.string,
+      error: PropTypes.bool,
+      errorMessage: PropTypes.string,
       list: PropTypes.shape({
         results: PropTypes.array,
       }),
@@ -68,7 +69,7 @@ class People extends Component {
   }
 
   render() {
-    const { loading, loaded } = this.props.people;
+    const { loading, loaded, error, errorMessage } = this.props.people;
     const { activePerson } = this.state;
 
     return (
@@ -76,7 +77,8 @@ class People extends Component {
         <Header1>People</Header1>
         <PersonModal person={activePerson} close={this.closeModal} />
         {loading && <Loading />}
-        {loaded && <div className="grid"> {this.renderPeople()} </div>}
+        {loaded && <div className="grid"> { this.renderPeople() } </div>}
+        {error && <Error> { errorMessage } </Error>}
       </div>
     );
   }

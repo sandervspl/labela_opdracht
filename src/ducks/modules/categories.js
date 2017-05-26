@@ -74,6 +74,7 @@ export const fetchCategories = () => async (dispatch) => {
 
   try {
     const payload = await getCategories();
+    console.log(payload);
 
     // set state to result
     dispatch(fetchSuccess(payload));

@@ -10,6 +10,7 @@ import * as categoriesActions from 'ducks/modules/categories';
 
 // components
 import Header1 from 'components/Header1';
+import Error from 'components/Error';
 import MenuItem from './MenuItem';
 
 // style
@@ -20,8 +21,8 @@ class Categories extends Component {
     categories: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
-      // error: PropTypes.bool,
-      // errorMessage: PropTypes.string,
+      error: PropTypes.bool,
+      errorMessage: PropTypes.string,
       list: PropTypes.shape({}),
     }),
     fetchCategories: PropTypes.func,
@@ -44,7 +45,7 @@ class Categories extends Component {
         return (
           <Link to={`/${category}`}>
             <MenuItem key={category}>
-              {category}
+              { category }
             </MenuItem>
           </Link>
         );
@@ -52,22 +53,23 @@ class Categories extends Component {
 
       return (
         <MenuItem key={category} className="disabled">
-          {category}
+          { category }
         </MenuItem>
       );
     });
   }
 
   render() {
-    const { loading, loaded } = this.props.categories;
+    const { loading, loaded, error, errorMessage } = this.props.categories;
     return (
       <div>
         <Header1>Categories</Header1>
         {loading && <p className="loading">loading...</p>}
         {loaded &&
         <div id="categories-container">
-          <ul id="categories-menu"> {this.renderCategories()} </ul>
+          <ul id="categories-menu"> { this.renderCategories() } </ul>
         </div>}
+        {error && <Error> { errorMessage } </Error>}
       </div>
     );
   }

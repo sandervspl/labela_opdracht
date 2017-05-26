@@ -9,6 +9,7 @@ import * as vehiclesActions from 'ducks/modules/vehicles';
 // components
 import Header1 from 'components/Header1';
 import Loading from 'components/Loading';
+import Error from 'components/Error';
 import Table from './Table/Table';
 
 // style
@@ -19,8 +20,8 @@ class Vehicles extends Component {
     vehicles: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
-      // error: PropTypes.bool,
-      // errorMessage: PropTypes.string,
+      error: PropTypes.bool,
+      errorMessage: PropTypes.string,
       list: PropTypes.shape({
         results: PropTypes.array,
       }),
@@ -38,7 +39,7 @@ class Vehicles extends Component {
   }
 
   render() {
-    const { loading, loaded } = this.props.vehicles;
+    const { loading, loaded, error, errorMessage } = this.props.vehicles;
     const { results } = this.props.vehicles.list;
 
     return (
@@ -49,6 +50,7 @@ class Vehicles extends Component {
         <div className="vehicles-table-container">
           <Table data={results} />
         </div>}
+        {error && <Error> { errorMessage } </Error>}
       </div>
     );
   }

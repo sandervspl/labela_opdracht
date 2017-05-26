@@ -34,7 +34,7 @@ const Table = ({ data }) => {
 
       // map table cells to array
       const tableCells = filterValues.map((value, index) =>
-        <TableCell key={index}> { value } </TableCell>,
+        <TableCell key={`v-td-${index}`}> { value } </TableCell>,
       );
 
       // map table rows to array
