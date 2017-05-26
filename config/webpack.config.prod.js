@@ -84,12 +84,12 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     extensions: ['.js', '.json', '.jsx', '.styl', ''],
     alias: {
-      api: path.resolve(__dirname, '../src/api'),
-      ducks: path.resolve(__dirname, '../src/ducks'),
-      components: path.resolve(__dirname, '../src/components'),
-      containers: path.resolve(__dirname, '../src/containers'),
-      store: path.resolve(__dirname, '../src/store'),
-      style: path.resolve(__dirname, '../src/style'),
+      api: path.join(__dirname, '../src/api'),
+      ducks: path.join(__dirname, '../src/ducks'),
+      components: path.join(__dirname, '../src/components'),
+      containers: path.join(__dirname, '../src/containers'),
+      store: path.join(__dirname, '../src/store'),
+      style: path.join(__dirname, '../src/style'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web'

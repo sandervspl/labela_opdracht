@@ -6,5 +6,27 @@
   ],
   "plugins": [
     "transform-runtime"
-  ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "babel-plugin-webpack-alias",
+          {
+            "config": "./config/webpack.config.prod.js"
+          }
+        ]
+      ]
+    },
+    "development": {
+      "plugins": [
+        [
+          "babel-plugin-webpack-alias",
+          {
+            "config": "./config/webpack.config.dev.js"
+          }
+        ]
+      ]
+    }
+  }
 }
