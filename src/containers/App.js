@@ -13,7 +13,6 @@ import './App.styl';
 
 const App = () => (
   <div className="app-layout">
-    <h1>Label A SWAPI Assignment</h1>
     <Switch>
       <Route exact path="/" component={Categories} />
       <Route exact path="/people" component={People} />

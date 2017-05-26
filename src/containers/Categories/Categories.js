@@ -8,9 +8,12 @@ import _ from 'lodash';
 // actions
 import * as categoriesActions from 'ducks/modules/categories';
 
-// style
-import './Categories.css';
+// components
+import Header1 from 'components/Header1';
+import MenuItem from './MenuItem';
 
+// style
+import './Categories.styl';
 
 class Categories extends Component {
   static propTypes = {
@@ -28,21 +31,43 @@ class Categories extends Component {
     const { fetchCategories } = this.props;
     const { loaded } = this.props.categories;
 
-    if (!loaded) { fetchCategories(); }
+    if (!loaded) {
+      fetchCategories();
+    }
   }
 
   renderCategories() {
     const keysArray = _.keys(this.props.categories.list);
-    return keysArray.map(category => (<li key={category}><Link to={`/${category}`}>{category}</Link></li>));
+
+    return keysArray.map((category) => {
+      if (category === 'people' || category === 'vehicles') {
+        return (
+          <Link to={`/${category}`}>
+            <MenuItem key={category}>
+              {category}
+            </MenuItem>
+          </Link>
+        );
+      }
+
+      return (
+        <MenuItem key={category} className="disabled">
+          {category}
+        </MenuItem>
+      );
+    });
   }
 
   render() {
     const { loading, loaded } = this.props.categories;
     return (
       <div>
-        <h1>Categories</h1>
+        <Header1>Categories</Header1>
         {loading && <p className="loading">loading...</p>}
-        {loaded && <ul> {this.renderCategories()} </ul>}
+        {loaded &&
+        <div id="categories-container">
+          <ul id="categories-menu"> {this.renderCategories()} </ul>
+        </div>}
       </div>
     );
   }

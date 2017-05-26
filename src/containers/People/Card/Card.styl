@@ -9,13 +9,11 @@
   color $silver
   cursor pointer
   box-shadow 0 1px 5px 1px rgba(0, 0, 0, 0.33)
-  transform translateY(0)
-  will-change transform, box-shadow
-  transition transform .3s ease-in-out, box-shadow .2s ease-in-out,
+  will-change background-color
+  transition background-color .1s ease-in-out
 
   &:hover
-    transform translateY(-5px)
-    box-shadow 0 15px 5px -6px rgba(0, 0, 0, 0.25)
+    background-color $grey_bright
 
   .name
     text-align center

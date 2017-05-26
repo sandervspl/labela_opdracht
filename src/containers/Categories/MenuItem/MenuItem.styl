@@ -1,0 +1,24 @@
+@import "~style/common.styl"
+
+.menu-item
+  padding 1rem
+  width 300px
+  background-color $shark
+  color $gallery
+  border-bottom 1px solid $grey_bright
+  will-change background-color
+  transition background-color .1s ease-in-out
+
+  > *
+    color $gallery
+
+  &:hover
+    background-color $grey_bright
+
+  &.disabled
+    background-color #000000
+    color $grey
+
+  .icon-container
+    float right
+    width .5rem

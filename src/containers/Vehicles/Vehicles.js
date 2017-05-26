@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import * as vehiclesActions from 'ducks/modules/vehicles';
 
 // components
+import Header1 from 'components/Header1';
 import Loading from 'components/Loading';
 import Table from './Table/Table';
 
@@ -42,7 +43,7 @@ class Vehicles extends Component {
 
     return (
       <div>
-        <h1>Vehicles</h1>
+        <Header1>Vehicles</Header1>
         {loading && <Loading />}
         {loaded &&
         <div className="vehicles-table-container">

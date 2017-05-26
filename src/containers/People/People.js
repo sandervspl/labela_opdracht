@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import * as peopleActions from 'ducks/modules/people';
 
 // components
+import Header1 from 'components/Header1';
 import Loading from 'components/Loading';
 import PersonModal from './PersonModal';
 import Card from './Card/Card';
@@ -72,7 +73,7 @@ class People extends Component {
 
     return (
       <div>
-        <h1>People</h1>
+        <Header1>People</Header1>
         <PersonModal person={activePerson} close={this.closeModal} />
         {loading && <Loading />}
         {loaded && <div className="grid"> {this.renderPeople()} </div>}
