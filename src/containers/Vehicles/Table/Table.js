@@ -3,6 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
+// components
+import TableHeader from 'components/TableHeader';
+import TableCell from 'components/TableCell';
+
 // style
 import './Table.styl';
 
@@ -19,7 +23,7 @@ const Table = ({ data }) => {
       const newKey = key.replace(/_/g, ' ');
 
       // map table headers to array
-      return <th key={`v-th-${key}`}>{newKey}</th>;
+      return <TableHeader key={`v-th-${key}`}> { newKey } </TableHeader>;
     });
   };
 
@@ -29,19 +33,21 @@ const Table = ({ data }) => {
       const filterValues = _.values(_.omit(vehicle, filterKeys));
 
       // map table cells to array
-      const tableCells = filterValues.map((value, index) => <td key={`${value}-${index}`}>{value}</td>);
+      const tableCells = filterValues.map((value, index) =>
+        <TableCell key={index}> { value } </TableCell>,
+      );
 
       // map table rows to array
-      return <tr key={vehicle.name} className="cell-row">{tableCells}</tr>;
+      return <tr key={vehicle.name} className="cell-row"> { tableCells } </tr>;
     });
 
   return (
     <table>
       <thead>
-        <tr className="header-row">{generateTableHeaders()}</tr>
+        <tr className="header-row"> { generateTableHeaders() } </tr>
       </thead>
       <tbody>
-        {generateTableRows()}
+        { generateTableRows() }
       </tbody>
     </table>
   );

@@ -1,0 +1,28 @@
+@import "~style/common.styl"
+
+th
+  color $silver
+  background $shark
+  border-bottom 4px solid $grey
+  border-right 1px solid $grey_bright
+  font-size 1rem
+  font-weight $thin
+  padding .6rem
+  text-align left
+  text-shadow 0 1px 1px rgba(0, 0, 0, 0.1)
+  vertical-align middle
+
+  &:first-child
+    border-top-left-radius 5px
+
+  &:last-child
+    border-top-right-radius 5px
+
+  &.text-left
+    text-align left
+
+  &.text-center
+    text-align center
+
+  &.text-right
+    text-align right
